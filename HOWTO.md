@@ -20,8 +20,8 @@ curl --location 'https://LS-SPDYNGW03.hluz.ess.local:443/e/ebf69986/api/v2/otlp/
 2 - Create a request-log.textproto using the schema displayed in the example folder
 3 - Execute command in shell to convert to .pb file:
 protoc -I . \
-  --encode=opentelemetry.proto.collector.logs.v1.ExportTraceServiceRequest \
-  opentelemetry/proto/collector/trace/v1/logs_service.proto \
+  --encode=opentelemetry.proto.collector.logs.v1.ExportLogsServiceRequest \
+  opentelemetry/proto/collector/logs/v1/logs_service.proto \
   < request-log.textproto \
   > request-log.pb
 
