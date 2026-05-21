@@ -1,0 +1,43 @@
+resource_logs {
+  resource {
+    attributes {
+      key: "service.name"
+      value { string_value: "manual-prototext-test" }
+    }
+  }
+ 
+  scope_logs {
+    scope {
+      name: "manual-zsh"
+      version: "0.1"
+    }
+ 
+    log_records {
+      # Timestamp = 2026‑05‑20 ~now (epoch nanos)
+      time_unix_nano: 1779294600000000000
+ 
+      # Log level
+      severity_text: "INFO"
+ 
+      # Main log message (this becomes Dynatrace "content")
+      body {
+        string_value: "Hello from OTLP prototext log 🔥"
+      }
+ 
+      # Optional but VERY useful → correlates with traces
+      trace_id: "\x7a\x3f\x1c\x90\x2b\x11\x4d\x2f\xa8\x58\x20\x9c\x1e\x9f\x5a\x01"
+      span_id:  "\x6b\x1f\x8c\x23\x09\xad\x4e\x77"
+ 
+      # Extra attributes (visible in Dynatrace as fields)
+      attributes {
+        key: "env"
+        value { string_value: "test" }
+      }
+      attributes {
+        key: "source"
+        value { string_value: "manual-prototext" }
+      }
+    }
+  }
+}
+ 

@@ -1,0 +1,56 @@
+resource_spans {
+  resource {
+    attributes {
+      key: "service.name"
+      value { string_value: "SelfhostStressTest/HUBAMP_WS/LiveAPI" }
+    }
+  }
+ 
+  scope_spans {
+    scope {
+      name: "azure-eventhub"
+      version: "1.0"
+    }
+ 
+    spans {
+      # From traceparent: 00-89945b79faf79ca583d8520a65f9e6be-ca3ee5f9fb251813-01
+      # trace_id (32 hex chars => 16 bytes)
+      trace_id: "\x89\x94\x5b\x79\xfa\xf7\x9c\xa5\x83\xd8\x52\x0a\x65\xf9\xe6\xbe"
+ 
+      # span_id (16 hex chars => 8 bytes)
+      span_id:  "\xca\x3e\xe5\xf9\xfb\x25\x18\x13"
+ 
+      # parent_span_id is null in your payload => root span (empty)
+      # parent_span_id: ""
+ 
+      name: "GET /HUBAMP_WS/rest/LiveAPI/GetTemposEsperaAMP"
+      kind: SPAN_KIND_SERVER
+ 
+      # request_start_time/end_time are in milliseconds => convert to nanoseconds (*1_000_000)
+      start_time_unix_nano: 1779296937144000000
+      end_time_unix_nano:   1779296953416000000
+ 
+      # W3C trace flags: "...-01" => sampled (lowest 8 bits = 1)
+      flags: 1
+ 
+      attributes {
+        key: "http.method"
+        value { string_value: "GET" }
+      }
+      attributes {
+        key: "http.target"
+        value { string_value: "/HUBAMP_WS/rest/LiveAPI/GetTemposEsperaAMP" }
+      }
+      attributes {
+        key: "http.status_code"
+        value { int_value: 200 }
+      }
+ 
+      # Optional: keep original api_name as span attribute too
+      attributes {
+        key: "api.name"
+        value { string_value: "SelfhostStressTest/HUBAMP_WS/LiveAPI" }
+      }
+    }
+  }
+}
